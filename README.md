@@ -37,6 +37,7 @@ in your app and/or console configuration file, add these
     // Google Maps Image and Geocode API settings
     'googleApiLibrary'   => [
             'class'             => 'quexer\googleapi\GoogleApiLibrary',
+            'webroot'           => '@webroot',
             'staticmap_api_key' => '***************************************',
             'geocode_api_key'   => '***************************************',
             'map_type'          => 'terrain',
