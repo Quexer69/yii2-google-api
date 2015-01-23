@@ -63,33 +63,34 @@ Once the extension is installed, simply use it in your code by  :
 
 ```php
 \Yii::$app->googleApiLibrary
+
+// Use $address OR $latlng
+$address 	          = '70180 Stuttgart, Germany';
+$latlng 	          = '48.7632145,9.174027';
+
 ```
 
 **Just type in an address string as you do on google maps!**
 
 ```php
-$address 	          = '70180 Stuttgart, Germany';
 $filePath             = \Yii::$app->googleApiLibrary->createImage($address,null);
 ```
 
 **For query by latitude and longitude**
 
 ```php
-$latlng 	          = '48.7632145,9.174027';
 $filePath             = \Yii::$app->googleApiLibrary->createImage(null, $latlng);
 ```
 
 **To simply get the Google geocode object**
 
 ```php
-$latlng 	          = '48.7632145,9.174027';
 $filePath             = \Yii::$app->googleApiLibrary->getGeoCodeObject(null, $latlng);
 ```
 
 **Render a Google map iframe**
 
 ```php
-$latlng 	          = '48.7632145,9.174027';
 $filePath             = \Yii::$app->googleApiLibrary->renderMapIframe(null, $latlng);
 ```
 
