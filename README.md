@@ -79,12 +79,19 @@ $latlng 	          = '48.7632145,9.174027';
 $filePath             = \Yii::$app->googleApiLibrary->createImage(null, $latlng);
 ```
 
+**To simply get the Google geocode object**
+
+```php
+$latlng 	          = '48.7632145,9.174027';
+$filePath             = \Yii::$app->googleApiLibrary->getGeoCodeObject(null, $latlng);
+```
+
 **Calculate Distance between two geo points**
 
 ```php
 $latlng_origin	      = ['48.7632145','9.174027'];
-$latlng_destination	 = ['48.4525334','9.468254'];
-$unit		           = 'miles'; // or 'km'
+$latlng_destination	  = ['48.4525334','9.468254'];
+$unit		          = 'miles'; // or 'km'
 
 $distance		      = \Yii::$app->googleApiLibrary->getDistance($latlng_origin, $latlng_destination, $unit);
 ```
@@ -93,15 +100,14 @@ $distance		      = \Yii::$app->googleApiLibrary->getDistance($latlng_origin, $la
 ---
 
 ```php
-function getGoogleMapIframe($address, $latlng, $iFrameWidth, $iFrameHeight)
+\Yii::$app->googleApiLibrary->getGoogleMapIframe($address, $latlng, $iFrameWidth, $iFrameHeight)
 
-function createImage($address, $latlng, $setMarker)
+\Yii::$app->googleApiLibrary->createImage($address, $latlng, $setMarker)
 
-function getGeoCodeObject($address, $latlng)
+\Yii::$app->googleApiLibrary->getGeoCodeObject($address, $latlng)
 
-function getDistance($start, $finish, $unit)
+\Yii::$app->googleApiLibrary->getDistance($start, $finish, $unit)
 
-static function getCountryByCode($short_country_code)
 ```
 
 
