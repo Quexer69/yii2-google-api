@@ -349,10 +349,13 @@ class GoogleApiLibrary extends \yii\base\Component
     {
         if ($address === null && $latlng === null) {
             if (!$this->quiet) {
-                echo "\n -> Please call renderIframeMap with at least an address or a latitude and longitude!";
-                return null;
+                echo 'IframeMap -> ' . \Yii::t(
+                        'app',
+                        'Please provide at least an address or a latitude and logitude pair!'
+                    );
             }
         }
+
         switch (true) {
             case $iFrameWidth !== null:
                 $this->map_iframe_width = $iFrameWidth;
@@ -448,24 +451,32 @@ class GoogleApiLibrary extends \yii\base\Component
             . '&key=' . $this->staticmap_api_key;
 
         // add 'markers' param if $setMarker is true (places marker on provided $geoObject)
-        $imageRequestUrl .= ($setMarker === true ? '&markers=color:' . $this->map_marker_color . '|' . $querystring :
-            '');
+        $imageRequestUrl .=
+            ($setMarker === true ? '&markers=color:' . $this->map_marker_color . '|' . $querystring : '');
 
-        // fullpath and filename before save image
+        // full path and filename before save image
         $address      = $this->getAddressComponents($geoObject);
         $relFilePath  = $this->map_image_path . '/' . $this->createImageFilename(
                 [$address['postal_code'], $address['locality'], $this->getCountryByCode($address['country_code'])],
                 'png'
             );
-        $fullFilePath = self::$webrootPath . '/' . $relFilePath;
+        $fullFilePath = self::$webrootPath . $relFilePath;
 
-        // Request the google map image
-        $handler = curl_init($imageRequestUrl);
-        curl_setopt($handler, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($handler, CURLOPT_PROXYPORT, 3128);
-        curl_setopt($handler, CURLOPT_SSL_VERIFYHOST, 0);
-        curl_setopt($handler, CURLOPT_SSL_VERIFYPEER, 0);
-        $googleImage = curl_exec($handler);
+        try {
+            // Request the google map image
+            $handler = curl_init($imageRequestUrl);
+            curl_setopt($handler, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($handler, CURLOPT_PROXYPORT, 3128);
+            curl_setopt($handler, CURLOPT_SSL_VERIFYHOST, 0);
+            curl_setopt($handler, CURLOPT_SSL_VERIFYPEER, 0);
+            $googleImage = curl_exec($handler);
+        } catch (\Exception $e) {
+            $msg = (isset($e->errorInfo[2])) ? $e->errorInfo[2] : $e->getMessage();
+            if (!$this->quiet) {
+                \Yii::$app->getSession()->setFlash('error', $msg);
+                echo "\n -> Alert: " . $msg;
+            }
+        }
 
         //if the img did not come back
         if (curl_errno($handler)) {
@@ -478,9 +489,17 @@ class GoogleApiLibrary extends \yii\base\Component
 
             return $return;
         } else {
-            @ini_set('allow_url_fopen', 1);
-            file_put_contents($fullFilePath, $googleImage);
-            @ini_set('allow_url_fopen', 0);
+            try {
+                //@ini_set('allow_url_fopen', 1);
+                file_put_contents($fullFilePath, $googleImage);
+                //@ini_set('allow_url_fopen', 0);
+            } catch (\Exception $e) {
+                $msg = (isset($e->errorInfo[2])) ? $e->errorInfo[2] : $e->getMessage();
+                if (!$this->quiet) {
+                    \Yii::$app->getSession()->setFlash('error', $msg);
+                    echo "\n -> Alert: " . $msg;
+                }
+            }
 
             if (!$this->quiet) {
                 echo "\n -> Image: " . $relFilePath;
@@ -528,13 +547,21 @@ class GoogleApiLibrary extends \yii\base\Component
                 . '&key=' . $this->geocode_api_key;
 
             // get geocode object
-            $ch = curl_init($geoCodeUrl);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-            $response = curl_exec($ch);
-            curl_close($ch);
+            try {
+                $ch = curl_init($geoCodeUrl);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+                $response = curl_exec($ch);
+                curl_close($ch);
+            } catch (\Exception $e) {
+                $msg = (isset($e->errorInfo[2])) ? $e->errorInfo[2] : $e->getMessage();
+                if (!$this->quiet) {
+                    \Yii::$app->getSession()->setFlash('error', $msg);
+                    echo "\n -> Alert: " . $msg;
+                }
+            }
 
             // json decode response
             $response_a = json_decode($response);
@@ -542,11 +569,11 @@ class GoogleApiLibrary extends \yii\base\Component
             if (isset($response_a->results[0])) {
                 return $response_a->results[0];
             } else {
-                return false;
+                return null;
             }
         } else {
             if (!$this->quiet) {
-                echo 'getGeoCodeObject() -> no input params given.';
+                echo 'getGeoCodeObject() -> ' . \Yii::t('app', 'no input params given!');
             }
         }
     }
