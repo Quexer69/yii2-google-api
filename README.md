@@ -14,13 +14,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist quexer69/yii2-google-api "*"
+php composer.phar require --prefer-dist quexer69/yii2-google-api "1.1.*"
 ```
 
 or add
 
 ```
-"quexer69/yii2-google-api": "*"
+"quexer69/yii2-google-api": "1.1.*"
 ```
 
 to the require section of your `composer.json` file.
