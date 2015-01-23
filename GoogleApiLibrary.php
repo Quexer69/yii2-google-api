@@ -8,9 +8,7 @@ use yii\helpers\Inflector;
  * Class GoogleApiLibrary
  * @description A collection of google map api calls, staticmap, geocode, iframe map for the Google API v3
  * @date 2015-01-23
- * @version 1.0.0
  * @author Christopher Stebe <cstebe@iserv4u.com>
- *
  */
 class GoogleApiLibrary extends \yii\base\Component
 {
