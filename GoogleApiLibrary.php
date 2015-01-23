@@ -595,14 +595,13 @@ class GoogleApiLibrary extends \yii\base\Component
         $distance = rad2deg($distance);
 
         switch (true) {
-            case $unit = 'miles' :
+            case strtoupper($unit) == strtoupper('miles') :
                 $distance = $distance * 60 * 1.1515;
                 break;
-            case $unit = 'km' :
+            case strtoupper($unit) == strtoupper('km') :
                 $distance = $distance * 60 * 1.1515 * 1.609344;
                 break;
         }
-
         return round($distance, 2);
     }
 
