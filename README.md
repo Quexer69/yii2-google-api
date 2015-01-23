@@ -32,7 +32,6 @@ in your app and/or console configuration file, add these
 
 
 ```php
-
 'components' => [
 
     // Google Maps Image and Geocode API settings
@@ -54,7 +53,6 @@ in your app and/or console configuration file, add these
     ],
     ...
 ],
-
 ```
 	
 Usage
@@ -66,41 +64,34 @@ Once the extension is installed, simply use it in your code by  :
 \Yii::$app()->googleApiLibrary
 ```
 
-
 **Just type in an address string as you do on google maps!**
 
 ```php
-
 $address 	          = '70180 Stuttgart, Germany';
 $filePath             = \Yii::$app()->googleApiLibrary->createImage($address,null);
-
 ```
 
 **For query by latitude and longitude**
 
 ```php
-
-    $latlng 	          = '48.7632145,9.174027';
-    $filePath             = \Yii::$app()->googleApiLibrary->createImage(null, $latlng);
+$latlng 	          = '48.7632145,9.174027';
+$filePath             = \Yii::$app()->googleApiLibrary->createImage(null, $latlng);
 ```
 
 **Calculate Distance between two geo points**
 
 ```php
+$latlng_origin	      = ['48.7632145,9.174027'];
+$latlng_destination	  = ['48.4525334,9.468254'];
+$unit		          = 'miles' // or 'km'
 
-    $latlng_origin	      = ['48.7632145,9.174027'];
-    $latlng_destination	  = ['48.4525334,9.468254'];
-    $unit		          = 'miles' // or 'km'
-
-    $distance		      = \Yii::$app()->googleApiLibrary->getDistance($latlng_origin, $latlng_destination, $unit);
+$distance		      = \Yii::$app()->googleApiLibrary->getDistance($latlng_origin, $latlng_destination, $unit);
 ```
-
 
 ###Public Methods
 ---
 
 ```php
-
 function getGoogleMapIframe($address, $latlng, $iFrameWidth, $iFrameHeight)
 
 function createImage($address, $latlng, $setMarker)
@@ -110,7 +101,6 @@ function getGeoCodeObject($address, $latlng)
 function getDistance($start, $finish, $unit)
 
 static function getCountryByCode($short_country_code)
-
 ```
 
 
