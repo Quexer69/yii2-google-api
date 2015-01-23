@@ -1,0 +1,21 @@
+{
+    "name": "quexer69/yii2-google-api",
+    "description": "A collection of google map api calls, staticmap, geocode, iframe, for google api v3",
+    "type": "yii2-extension",
+    "keywords": ["yii2","google","api","google map","extension"],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Christopher Stebe",
+            "email": "cstebe@iserv4u.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "2.0.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "quexer\\googleapi\\": ""
+        }
+    }
+}
