@@ -48,7 +48,7 @@ in your app and/or console configuration file, add these
             'map_marker_color'  => 'red',
             'map_iframe_width'  => '100%',
             'map_iframe_height' => '500', // in px
-            'language'          => 'de',
+            'map_language       => 'de',
             'quiet'             => false
     ],
     ...
@@ -61,21 +61,21 @@ Usage
 Once the extension is installed, simply use it in your code by  :
 
 ```php
-\Yii::$app()->googleApiLibrary
+\Yii::$app->googleApiLibrary
 ```
 
 **Just type in an address string as you do on google maps!**
 
 ```php
 $address 	          = '70180 Stuttgart, Germany';
-$filePath             = \Yii::$app()->googleApiLibrary->createImage($address,null);
+$filePath             = \Yii::$app->googleApiLibrary->createImage($address,null);
 ```
 
 **For query by latitude and longitude**
 
 ```php
 $latlng 	          = '48.7632145,9.174027';
-$filePath             = \Yii::$app()->googleApiLibrary->createImage(null, $latlng);
+$filePath             = \Yii::$app->googleApiLibrary->createImage(null, $latlng);
 ```
 
 **Calculate Distance between two geo points**
@@ -85,7 +85,7 @@ $latlng_origin	      = ['48.7632145,9.174027'];
 $latlng_destination	  = ['48.4525334,9.468254'];
 $unit		          = 'miles' // or 'km'
 
-$distance		      = \Yii::$app()->googleApiLibrary->getDistance($latlng_origin, $latlng_destination, $unit);
+$distance		      = \Yii::$app->googleApiLibrary->getDistance($latlng_origin, $latlng_destination, $unit);
 ```
 
 ###Public Methods
