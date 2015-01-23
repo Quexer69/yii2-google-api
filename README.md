@@ -81,9 +81,9 @@ $filePath             = \Yii::$app->googleApiLibrary->createImage(null, $latlng)
 **Calculate Distance between two geo points**
 
 ```php
-$latlng_origin	      = ['48.7632145,9.174027'];
-$latlng_destination	  = ['48.4525334,9.468254'];
-$unit		          = 'miles' // or 'km'
+$latlng_origin	      = ['48.7632145','9.174027'];
+$latlng_destination	 = ['48.4525334','9.468254'];
+$unit		           = 'miles'; // or 'km'
 
 $distance		      = \Yii::$app->googleApiLibrary->getDistance($latlng_origin, $latlng_destination, $unit);
 ```
