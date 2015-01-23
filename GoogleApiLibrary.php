@@ -618,12 +618,11 @@ class GoogleApiLibrary extends \yii\base\Component
 
             $rawFilename = null;
             foreach ($attributes as $attribute) {
-                $rawFilename .= $attribute . '_';
+                $rawFilename .= $attribute . ' ';
             }
-
             $rawFilename = substr($rawFilename, 0, sizeof($rawFilename) - 2);
 
-            return utf8_decode(Inflector::slug($rawFilename)) . '.' . $type;
+            return Inflector::slug($rawFilename) . '.' . $type;
         } else {
             return null;
         }
