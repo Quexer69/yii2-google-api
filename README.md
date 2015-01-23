@@ -30,12 +30,11 @@ to the require section of your `composer.json` file.
 ---
 in your app and/or console configuration file, add these
 
-    'components' => array(
-    	'googleApiLibrary'   => array(
-    			'class'             => 'vendor.quexer69.php-google-api.GoogleMapApi',
-                /**
-                 * Google Maps Image and Geocode API settings
-                 */
+    'components' => [
+    
+        // Google Maps Image and Geocode API settings
+    	'googleApiLibrary'   => [
+    			'class'             => 'quexer\googleapi\GoogleApiLibrary',
                 'staticmap_api_key' => '***************************************',
                 'geocode_api_key'   => '***************************************',
                 'map_type'          => 'terrain',
@@ -49,9 +48,9 @@ in your app and/or console configuration file, add these
                 'map_iframe_height' => '500', // in px
                 'language'          => 'de',
                 'quiet'             => false
-    	),
+    	],
 		...
-	),
+	],
 	
 Usage
 -----
@@ -59,26 +58,27 @@ Usage
 Once the extension is installed, simply use it in your code by  :
 
 ```php
-<?= \quexer\googleapi\GoogleApiLibrary::widget(); ?>```
+\Yii::$app()->googleApiLibrary
+```
 
 
 **Just type in an address string as you do on google maps!**
 
     $address 	          = '70180 Stuttgart, Germany';
-    $filePath             = Yii::app()->googleMapApi->createImage($address,null);
+    $filePath             = \Yii::$app()->googleApiLibrary->createImage($address,null);
 
 **For query by latitude and longitude**
 
     $latlng 	          = '48.7632145,9.174027';
-    $filePath             = Yii::app()->googleMapApi->createImage(null, $latlng);
+    $filePath             = \Yii::$app()->googleApiLibrary->createImage(null, $latlng);
 
 **Calculate Distance between two geo points**
 
-    $latlng_origin	      = array('48.7632145,9.174027');
-    $latlng_destination	  = array('48.4525334,9.468254');
+    $latlng_origin	      = ['48.7632145,9.174027'];
+    $latlng_destination	  = ['48.4525334,9.468254'];
     $unit		          = 'miles' // or 'km'
 
-    $distance		      = Yii::app()->googleMapApi->getDistance($latlng_origin, $latlng_destination, $unit);
+    $distance		      = \Yii::$app()->googleApiLibrary->getDistance($latlng_origin, $latlng_destination, $unit);
 
 
 ###Public Methods
