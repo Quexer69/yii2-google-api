@@ -343,7 +343,7 @@ class GoogleApiLibrary extends \yii\base\Component
      *
      * @return string
      */
-    public function renderIframeMap($address = null, $latlng = null, $iFrameWidth = null, $iFrameHeight = null)
+    public function renderMapIframe($address = null, $latlng = null, $iFrameWidth = null, $iFrameHeight = null)
     {
         if ($address === null && $latlng === null) {
             if (!$this->quiet) {

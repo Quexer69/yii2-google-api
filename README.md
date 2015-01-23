@@ -14,13 +14,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist quexer69/yii2-google-api "1.1.*"
+php composer.phar require --prefer-dist quexer69/yii2-google-api "2.0.*"
 ```
 
 or add
 
 ```
-"quexer69/yii2-google-api": "1.1.*"
+"quexer69/yii2-google-api": "2.0.*"
 ```
 
 to the require section of your `composer.json` file.
@@ -86,6 +86,13 @@ $latlng 	          = '48.7632145,9.174027';
 $filePath             = \Yii::$app->googleApiLibrary->getGeoCodeObject(null, $latlng);
 ```
 
+**Render a Google map iframe**
+
+```php
+$latlng 	          = '48.7632145,9.174027';
+$filePath             = \Yii::$app->googleApiLibrary->renderMapIframe(null, $latlng);
+```
+
 **Calculate Distance between two geo points**
 
 ```php
@@ -100,7 +107,7 @@ $distance		      = \Yii::$app->googleApiLibrary->getDistance($latlng_origin, $la
 ---
 
 ```php
-\Yii::$app->googleApiLibrary->getGoogleMapIframe($address, $latlng, $iFrameWidth, $iFrameHeight)
+\Yii::$app->googleApiLibrary->renderMapIframe($address, $latlng, $iFrameWidth, $iFrameHeight)
 
 \Yii::$app->googleApiLibrary->createImage($address, $latlng, $setMarker)
 
