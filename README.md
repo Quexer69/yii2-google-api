@@ -70,16 +70,10 @@ $latlng 	          = '48.7632145,9.174027';
 
 ```
 
-**Just type in an address string as you do on google maps!**
+**Create a Google map image**
 
 ```php
-$filePath             = \Yii::$app->googleApiLibrary->createImage($address,null);
-```
-
-**For query by latitude and longitude**
-
-```php
-$filePath             = \Yii::$app->googleApiLibrary->createImage(null, $latlng);
+$filePath             = \Yii::$app->googleApiLibrary->createImage($address, null, true);
 ```
 
 **To simply get the Google geocode object**
