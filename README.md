@@ -95,19 +95,19 @@ $latlng 	          = '48.7632145,9.174027';
 **Create a Google map image**
 
 ```php
-$filePath             = \Yii::$app->googleApi->createImage($address, null, true);
+$relFilePath          = \Yii::$app->googleApi->createImage($address, null, true);
 ```
 
 **To simply get the Google geocode object**
 
 ```php
-$filePath             = \Yii::$app->googleApi->getGeoCodeObject(null, $latlng);
+$relFilePath          = \Yii::$app->googleApi->getGeoCodeObject(null, $latlng);
 ```
 
 **Render a Google map iframe**
 
 ```php
-$filePath             = \Yii::$app->googleApi->renderMapIframe(null, $latlng);
+$iframeMarkup         = \Yii::$app->googleApi->renderMapIframe(null, $latlng);
 ```
 
 **Calculate Distance between two geo points**
@@ -117,5 +117,5 @@ $latlng_origin	      = ['48.7632145','9.174027'];
 $latlng_destination	  = ['48.4525334','9.468254'];
 $unit		          = 'miles'; // 'miles' or 'km'
 
-$distance		      = \Yii::$app->googleApi->getDistance($latlng_origin, $latlng_destination, $unit);
+$floatDistance    = \Yii::$app->googleApi->getDistance($latlng_origin, $latlng_destination, $unit);
 ```
