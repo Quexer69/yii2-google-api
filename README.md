@@ -119,3 +119,15 @@ $unit		          = 'miles'; // 'miles' or 'km'
 
 $floatDistance        = \Yii::$app->googleApi->getDistance($latlng_origin, $latlng_destination, $unit);
 ```
+
+##See also
+... a more extensive variant
+ * [2amigos/yii2-google-maps-library](https://github.com/2amigos/yii2-google-maps-library)
+ 
+
+##Resources
+
+ * [Google Maps API Reference](https://developers.google.com/maps/documentation/)
+ * [Project on GitHub](Quexer69/yii2-google-api)
+ * [Quexer69 Packagist Profile](https://packagist.org/packages/Quexer69/)
+
