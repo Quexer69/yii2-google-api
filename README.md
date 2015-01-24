@@ -9,7 +9,7 @@ A collection of google map api calls, staticmap, geocode, iframe map
 Installation
 ------------
 
-The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
+The preferred way to install this component is through [composer](http://getcomposer.org/download/).
 
 Either run
 
@@ -55,53 +55,6 @@ in your app and/or console configuration file, add these
     ...
 ],
 ```
-	
-Usage
------
-
-Once the extension is installed, simply use it in your code by  :
-
-```php
-\Yii::$app->googleApiLibrary
-```
-
-**Just type in an address string as you do on google maps!**
-
-```php
-$address 	          = '70180 Stuttgart, Germany';
-$filePath             = \Yii::$app->googleApiLibrary->createImage($address,null);
-```
-
-**For query by latitude and longitude**
-
-```php
-$latlng 	          = '48.7632145,9.174027';
-$filePath             = \Yii::$app->googleApiLibrary->createImage(null, $latlng);
-```
-
-**To simply get the Google geocode object**
-
-```php
-$latlng 	          = '48.7632145,9.174027';
-$filePath             = \Yii::$app->googleApiLibrary->getGeoCodeObject(null, $latlng);
-```
-
-**Render a Google map iframe**
-
-```php
-$latlng 	          = '48.7632145,9.174027';
-$filePath             = \Yii::$app->googleApiLibrary->renderMapIframe(null, $latlng);
-```
-
-**Calculate Distance between two geo points**
-
-```php
-$latlng_origin	      = ['48.7632145','9.174027'];
-$latlng_destination	  = ['48.4525334','9.468254'];
-$unit		          = 'miles'; // or 'km'
-
-$distance		      = \Yii::$app->googleApiLibrary->getDistance($latlng_origin, $latlng_destination, $unit);
-```
 
 ###Public Methods
 ---
@@ -117,4 +70,42 @@ $distance		      = \Yii::$app->googleApiLibrary->getDistance($latlng_origin, $la
 
 ```
 
+Usage
+-----
 
+Once the component is installed, simply use it in your code by:
+
+```php
+// Use $address OR $latlng
+$address 	          = '70180 Stuttgart, Germany';
+$latlng 	          = '48.7632145,9.174027';
+
+```
+
+**Create a Google map image**
+
+```php
+$filePath             = \Yii::$app->googleApiLibrary->createImage($address, null, true);
+```
+
+**To simply get the Google geocode object**
+
+```php
+$filePath             = \Yii::$app->googleApiLibrary->getGeoCodeObject(null, $latlng);
+```
+
+**Render a Google map iframe**
+
+```php
+$filePath             = \Yii::$app->googleApiLibrary->renderMapIframe(null, $latlng);
+```
+
+**Calculate Distance between two geo points**
+
+```php
+$latlng_origin	      = ['48.7632145','9.174027'];
+$latlng_destination	  = ['48.4525334','9.468254'];
+$unit		          = 'miles'; // or 'km'
+
+$distance		      = \Yii::$app->googleApiLibrary->getDistance($latlng_origin, $latlng_destination, $unit);
+```
