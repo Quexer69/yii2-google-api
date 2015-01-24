@@ -1,6 +1,8 @@
 # Yii2 google api collection 
 -----------------------------
 
+[![Latest Stable Version](https://poser.pugx.org/quexer69/yii2-google-api/v/stable.svg)](https://packagist.org/packages/quexer69/yii2-google-api) [![Total Downloads](https://poser.pugx.org/quexer69/yii2-google-api/downloads.svg)](https://packagist.org/packages/quexer69/yii2-google-api) [![Latest Unstable Version](https://poser.pugx.org/quexer69/yii2-google-api/v/unstable.svg)](https://packagist.org/packages/quexer69/yii2-google-api) [![License](https://poser.pugx.org/quexer69/yii2-google-api/license.svg)](https://packagist.org/packages/quexer69/yii2-google-api)
+
 A collection of google map api calls, staticmap, geocode, iframe map
 
 ...for Google API v3, PHP >= 5.4.0, Yii 2.0.*
