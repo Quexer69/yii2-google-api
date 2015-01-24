@@ -57,7 +57,7 @@ in your app and/or console configuration file, add these
             'map_marker_color'  => 'red',
             'map_iframe_width'  => '100%', // %, px, em
             'map_iframe_height' => '500px',  // %, px, em
-            'map_language'       => 'de',
+            'map_language'        => 'de',
             
             // Debug
             'quiet'             => false
