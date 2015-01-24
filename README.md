@@ -117,5 +117,5 @@ $latlng_origin	      = ['48.7632145','9.174027'];
 $latlng_destination	  = ['48.4525334','9.468254'];
 $unit		          = 'miles'; // 'miles' or 'km'
 
-$floatDistance       = \Yii::$app->googleApi->getDistance($latlng_origin, $latlng_destination, $unit);
+$floatDistance        = \Yii::$app->googleApi->getDistance($latlng_origin, $latlng_destination, $unit);
 ```
