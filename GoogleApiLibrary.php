@@ -8,10 +8,10 @@ use yii\helpers\Inflector;
  * Class GoogleApiLibrary
  * 
  * @copyright Copyright (c) 2014 iServ4u GbR, Stuttgart
- * @description A collection of google map api calls, staticmap, geocode, iframe map for the Google API v3
- * @date 2015-01-23
  * @author Christopher Stebe <cstebe@iserv4u.com>
  * @package quexer\googleapi
+ * @description A collection of google map api calls, staticmap, geocode, iframe map for the Google API v3
+ * @date 2015-01-23
  */
 class GoogleApiLibrary extends \yii\base\Component
 {
