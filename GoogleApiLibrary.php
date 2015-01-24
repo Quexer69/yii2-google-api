@@ -337,7 +337,7 @@ class GoogleApiLibrary extends \yii\base\Component
     /**
      * @var the full webroot path from \Yii::getAlias($this->webroot)
      */
-    private static $webrootPath;
+    private static $imagePath;
 
     /**
      * @param null $address
@@ -424,7 +424,7 @@ class GoogleApiLibrary extends \yii\base\Component
      */
     public function createImage($address = null, $latlng = null, $setMarker = false)
     {
-        self::$webrootPath = realpath(\Yii::getAlias($this->webroot));
+        self::$imagePath = realpath(\Yii::getAlias($this->webroot)) . '/' . $this->map_image_path;
 
         // get google geocde object
         switch (true) {
@@ -458,11 +458,11 @@ class GoogleApiLibrary extends \yii\base\Component
 
         // full path and filename before save image
         $address      = $this->getAddressComponents($geoObject);
-        $relFilePath  = $this->map_image_path . '/' . $this->createImageFilename(
+        $image        = $this->createImageFilename(
                 [$address['postal_code'], $address['locality'], $this->getCountryByCode($address['country_code'])],
                 'png'
             );
-        $fullFilePath = self::$webrootPath . $relFilePath;
+        $fullFilePath = self::$imagePath . '/' .  $image;
 
         try {
             // Request the google map image
@@ -504,13 +504,13 @@ class GoogleApiLibrary extends \yii\base\Component
             }
 
             if (!$this->quiet) {
-                echo "\n -> Image: " . $relFilePath;
+                echo "\n -> Image: " . $image;
             }
 
             // Close handle
             curl_close($handler);
 
-            return $relFilePath;
+            return $image;
         }
     }
 
