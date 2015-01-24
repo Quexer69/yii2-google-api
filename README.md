@@ -34,22 +34,30 @@ in your app and/or console configuration file, add these
 ```php
 'components' => [
 
-    // Google Maps Image and Geocode API settings
-    'googleApiLibrary'   => [
+    // Google Maps Image and Geocode API settings for \Yii::$app->googleApi component
+    'googleApi'   => [
             'class'             => 'quexer\googleapi\GoogleApiLibrary',
-            'webroot'           => '@webroot',
+            
+            // API Keys !!!
             'staticmap_api_key' => '***************************************',
             'geocode_api_key'   => '***************************************',
+            
+            // Set basePath
+            'webroot'           => '@webroot',
+            
+            // Image path and map iframe settings
+            'map_image_path'    => '/images/google_map',
             'map_type'          => 'terrain',
             'map_size'          => '520x350',
             'map_sensor'        => false,
             'map_zoom'          => 9,
             'map_scale'         => 1,
-            'map_image_path'    => '/images/google_map',
             'map_marker_color'  => 'red',
             'map_iframe_width'  => '100%', // %, px, em
             'map_iframe_height' => '500px',  // %, px, em
             'map_language       => 'de',
+            
+            // Debug
             'quiet'             => false
     ],
     ...
@@ -60,13 +68,13 @@ in your app and/or console configuration file, add these
 ---
 
 ```php
-\Yii::$app->googleApiLibrary->renderMapIframe($address, $latlng, $iFrameWidth, $iFrameHeight)
+\Yii::$app->googleApi->renderMapIframe($address, $latlng, $iFrameWidth, $iFrameHeight)
 
-\Yii::$app->googleApiLibrary->createImage($address, $latlng, $setMarker)
+\Yii::$app->googleApi->createImage($address, $latlng, $setMarker)
 
-\Yii::$app->googleApiLibrary->getGeoCodeObject($address, $latlng)
+\Yii::$app->googleApi->getGeoCodeObject($address, $latlng)
 
-\Yii::$app->googleApiLibrary->getDistance($start, $finish, $unit)
+\Yii::$app->googleApi->getDistance($start, $finish, $unit)
 
 ```
 
@@ -85,19 +93,19 @@ $latlng 	          = '48.7632145,9.174027';
 **Create a Google map image**
 
 ```php
-$filePath             = \Yii::$app->googleApiLibrary->createImage($address, null, true);
+$filePath             = \Yii::$app->googleApi->createImage($address, null, true);
 ```
 
 **To simply get the Google geocode object**
 
 ```php
-$filePath             = \Yii::$app->googleApiLibrary->getGeoCodeObject(null, $latlng);
+$filePath             = \Yii::$app->googleApi->getGeoCodeObject(null, $latlng);
 ```
 
 **Render a Google map iframe**
 
 ```php
-$filePath             = \Yii::$app->googleApiLibrary->renderMapIframe(null, $latlng);
+$filePath             = \Yii::$app->googleApi->renderMapIframe(null, $latlng);
 ```
 
 **Calculate Distance between two geo points**
@@ -107,5 +115,5 @@ $latlng_origin	      = ['48.7632145','9.174027'];
 $latlng_destination	  = ['48.4525334','9.468254'];
 $unit		          = 'miles'; // 'miles' or 'km'
 
-$distance		      = \Yii::$app->googleApiLibrary->getDistance($latlng_origin, $latlng_destination, $unit);
+$distance		      = \Yii::$app->googleApi->getDistance($latlng_origin, $latlng_destination, $unit);
 ```
