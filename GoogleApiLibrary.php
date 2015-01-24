@@ -5,7 +5,11 @@ namespace quexer\googleapi;
 use yii\helpers\Inflector;
 
 /**
+ * @copyright Copyright (c) 2014 iServ4u GbR, Stuttgart
+ * @licence BSD-3-Clause
+ *
  * Class GoogleApiLibrary
+ *
  * @description A collection of google map api calls, staticmap, geocode, iframe map for the Google API v3
  * @date 2015-01-23
  * @author Christopher Stebe <cstebe@iserv4u.com>
@@ -511,7 +515,7 @@ class GoogleApiLibrary extends \yii\base\Component
     }
 
     /**
-     * generate google maps geocode request
+     * generate google maps, geocode request
      *
      * if address is set, query by address, else by latlng
      *
