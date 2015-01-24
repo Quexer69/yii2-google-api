@@ -47,8 +47,8 @@ in your app and/or console configuration file, add these
             'map_scale'         => 1,
             'map_image_path'    => '/images/google_map',
             'map_marker_color'  => 'red',
-            'map_iframe_width'  => '100%',
-            'map_iframe_height' => '500', // in px
+            'map_iframe_width'  => '100%', // %, px, em
+            'map_iframe_height' => '500px',  // %, px, em
             'map_language       => 'de',
             'quiet'             => false
     ],
@@ -105,7 +105,7 @@ $filePath             = \Yii::$app->googleApiLibrary->renderMapIframe(null, $lat
 ```php
 $latlng_origin	      = ['48.7632145','9.174027'];
 $latlng_destination	  = ['48.4525334','9.468254'];
-$unit		          = 'miles'; // or 'km'
+$unit		          = 'miles'; // 'miles' or 'km'
 
 $distance		      = \Yii::$app->googleApiLibrary->getDistance($latlng_origin, $latlng_destination, $unit);
 ```
