@@ -55,11 +55,25 @@ in your app and/or console configuration file, add these
     ...
 ],
 ```
-	
+
+###Public Methods
+---
+
+```php
+\Yii::$app->googleApiLibrary->renderMapIframe($address, $latlng, $iFrameWidth, $iFrameHeight)
+
+\Yii::$app->googleApiLibrary->createImage($address, $latlng, $setMarker)
+
+\Yii::$app->googleApiLibrary->getGeoCodeObject($address, $latlng)
+
+\Yii::$app->googleApiLibrary->getDistance($start, $finish, $unit)
+
+```
+
 Usage
 -----
 
-Once the extension is installed, simply use it in your code by  :
+Once the component is installed, simply use it in your code by:
 
 ```php
 \Yii::$app->googleApiLibrary
@@ -97,19 +111,3 @@ $unit		          = 'miles'; // or 'km'
 
 $distance		      = \Yii::$app->googleApiLibrary->getDistance($latlng_origin, $latlng_destination, $unit);
 ```
-
-###Public Methods
----
-
-```php
-\Yii::$app->googleApiLibrary->renderMapIframe($address, $latlng, $iFrameWidth, $iFrameHeight)
-
-\Yii::$app->googleApiLibrary->createImage($address, $latlng, $setMarker)
-
-\Yii::$app->googleApiLibrary->getGeoCodeObject($address, $latlng)
-
-\Yii::$app->googleApiLibrary->getDistance($start, $finish, $unit)
-
-```
-
-
