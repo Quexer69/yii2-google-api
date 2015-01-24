@@ -491,9 +491,9 @@ class GoogleApiLibrary extends \yii\base\Component
             return $return;
         } else {
             try {
-                //@ini_set('allow_url_fopen', 1);
+                @ini_set('allow_url_fopen', 1);
                 file_put_contents($fullFilePath, $googleImage);
-                //@ini_set('allow_url_fopen', 0);
+                @ini_set('allow_url_fopen', 0);
             } catch (\Exception $e) {
                 $msg = (isset($e->errorInfo[2])) ? $e->errorInfo[2] : $e->getMessage();
                 if (!$this->quiet) {
