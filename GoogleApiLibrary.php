@@ -5,14 +5,13 @@ namespace quexer\googleapi;
 use yii\helpers\Inflector;
 
 /**
- * @copyright Copyright (c) 2014 iServ4u GbR, Stuttgart
- * @licence BSD-3-Clause
- *
  * Class GoogleApiLibrary
- *
+ * 
+ * @copyright Copyright (c) 2014 iServ4u GbR, Stuttgart
  * @description A collection of google map api calls, staticmap, geocode, iframe map for the Google API v3
  * @date 2015-01-23
  * @author Christopher Stebe <cstebe@iserv4u.com>
+ * @package quexer\googleapi
  */
 class GoogleApiLibrary extends \yii\base\Component
 {
