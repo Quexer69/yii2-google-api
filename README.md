@@ -76,8 +76,6 @@ Usage
 Once the component is installed, simply use it in your code by:
 
 ```php
-\Yii::$app->googleApiLibrary
-
 // Use $address OR $latlng
 $address 	          = '70180 Stuttgart, Germany';
 $latlng 	          = '48.7632145,9.174027';
