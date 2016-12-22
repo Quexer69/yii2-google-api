@@ -712,4 +712,32 @@ class GoogleApiLibrary extends \yii\base\Component
         }
         return null;
     }
+    
+    /**
+     * Returns maps bounds and center starting from address.
+     *
+     * @param $address
+     *
+     * @return array|null
+     */
+    public function getBounds($address = null)
+    {
+        $geoObject = $this->getGeoCodeObject($address);
+        if (is_object($geoObject) && isset($geoObject->geometry)) {
+
+            $geocodeObj = array(
+                'alat' => $geoObject->geometry->location->lat,
+                'alng' => $geoObject->geometry->location->lng,
+                'lat_ne' => $geoObject->geometry->viewport->northeast->lat,
+                'lng_ne' => $geoObject->geometry->viewport->northeast->lng,
+                'lat_sw' => $geoObject->geometry->viewport->southwest->lat,
+                'lng_sw' => $geoObject->geometry->viewport->southwest->lng,
+            );
+
+            return $geocodeObj;
+
+        }
+
+        return null;
+    }
 }
