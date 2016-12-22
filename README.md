@@ -78,6 +78,8 @@ in your app and/or console configuration file, add these
 
 \Yii::$app->googleApi->getDistance($start, $finish, $unit)
 
+\Yii::$app->googleApi->getBounds($address)
+
 ```
 
 Usage
