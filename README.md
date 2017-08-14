@@ -8,8 +8,7 @@ A collection of google map api calls, staticmap, geocode, iframe map
 ...for Google API v3, PHP >= 5.4.0, Yii 2.0.*
 
 
-Installation
-------------
+## Installation
 
 The preferred way to install this component is through [composer](http://getcomposer.org/download/).
 
@@ -28,8 +27,8 @@ or add
 to the require section of your `composer.json` file.
 
 
-###Configuration
----
+## Configuration
+
 in your app and/or console configuration file, add these
 
 
@@ -66,8 +65,7 @@ in your app and/or console configuration file, add these
 ],
 ```
 
-###Public Methods
----
+## Public Methods
 
 ```php
 \Yii::$app->googleApi->renderMapIframe($address, $latlng, $iFrameWidth, $iFrameHeight)
@@ -82,8 +80,7 @@ in your app and/or console configuration file, add these
 
 ```
 
-Usage
------
+## Usage
 
 Once the component is installed, simply use it in your code by:
 
@@ -122,12 +119,12 @@ $unit		          = 'miles'; // 'miles' or 'km'
 $floatDistance        = \Yii::$app->googleApi->getDistance($latlng_origin, $latlng_destination, $unit);
 ```
 
-##See also
+## See also
 ... a more extensive variant
  * [2amigos/yii2-google-maps-library](https://github.com/2amigos/yii2-google-maps-library)
  
 
-##Resources
+## Resources
 
  * [Google Maps API Reference](https://developers.google.com/maps/documentation/)
  * [Project on GitHub](Quexer69/yii2-google-api)
